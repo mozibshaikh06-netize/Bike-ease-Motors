@@ -1,0 +1,487 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+    
+}
+                          /* navbar section */
+.navbar{
+    height: 80px;
+    width: 100%;
+    background-color: black;
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+.nav-img{
+    width: 180px;
+    height: 100%;
+    background-image: url("images/logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 80px;
+}
+
+
+.nav-links{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-right: 150px;
+}
+
+.nav-links a{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover{
+    color: rgb(230, 166, 166);
+    transform: scale(1.15);   
+    text-shadow: 0 4px 8px rgba(255, 0, 0, 0.6); 
+}
+
+.nav-login{
+    margin-right: 80px;
+}
+
+
+.nav-login a{
+
+    display: inline-block;
+
+    padding: 12px 30px;
+
+    background: linear-gradient(135deg,#ff3b30,#d40000);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    border-radius: 30px;
+
+    transition: all 0.3s ease;
+}
+
+.nav-login a:hover{
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 18px rgba(255,0,0,0.45);
+}
+
+.nav-right{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-right: 80px;
+}
+
+.admin-link{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.admin-link:hover{
+    color: rgb(230, 166, 166);
+    transform: scale(1.15);
+    text-shadow: 0 4px 8px rgba(255, 0, 0, 0.6);
+}
+
+/* Remove the old margin because nav-right now handles it */
+.nav-login{
+    margin-right: 0;
+}
+/* navbar section ends  */
+
+/* herso img(top section) */
+.top-main{
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 13px;
+}
+
+.top-main-hero-img{
+
+    width: 98%;
+
+    height: 40vh;
+
+    min-height: 350px;
+
+    background-image: url("images/mian-img.png");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    border-radius: 12px;
+}
+
+/* info panel section */
+.exploer-panel{
+    background-color: rgb(255, 255, 255);
+    margin-top: 8px;
+    margin-left: 25px;
+}
+.panel-heading H2{
+  color: rgb(101, 101, 101);
+  font-size: 28px;
+}
+
+/* bikes show section purchase/sell  */
+
+.bikes-show-section{
+    width: 98%;
+    margin-top: 4px;
+    margin-left: auto;
+    margin-right: auto;
+
+    background-color: rgb(242, 238, 238);     
+    /* 248, 246, 246 */
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.first-row-bike-section,.second-row-bike-section,.third-row-bike-section{
+ display: flex;
+ align-items: center;
+   justify-content: center;
+  flex-wrap: wrap;
+  gap: 45px;
+   margin-top: -8px;
+   
+}
+
+.bike-type{
+    color: rgb(54, 45, 45);font-size: 30px
+}
+
+.bikes-show-card{
+
+    width: 400px;
+    background-color: rgb(255, 254, 254);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: 0.3s;
+}
+
+.bikes-show-card:hover{
+ transform: translateY(-5px);
+}
+
+.bikes-images{
+    width: 100%;
+    height: 200px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f5f5f5;
+}
+
+.bikes-name{
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.bikes-details{
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 30px;
+
+margin-top: 8px;
+margin-bottom: 10px;
+}
+
+.bikes-details-sub p{
+font-size: 20px;
+color: rgb(93, 91, 91);
+margin-top: 8px;
+}
+
+.bikes-details-sub span{
+    text-align: center;
+    color: rgb(16, 14, 14);
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.bikes-card-price{
+    text-align: center;
+}
+
+.bikes-card-price span{
+    font-size: 24px;
+    font-weight: bold;
+    color: #d40000;
+}
+
+.bikes-card-price p{
+    display: inline;
+    font-size: 20px;
+    font-weight: normal;
+    color: rgb(19, 17, 16);
+    margin-left: 6px;
+    
+}
+
+.bikes-booking{
+    text-align: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.bikes-booking a{
+
+    display: inline-block;
+
+    width: 95%;
+
+    padding: 12px;
+
+    /* background-color: rgb(121, 120, 118); */
+    /* background-color: rgb(69, 100, 193); */
+    background-color: #2C3E50;
+
+    color: white;
+
+    text-decoration: none;
+
+    text-align: center;
+
+    font-size: 18px;
+
+    border-radius: 8px;
+
+    transition: 0.3s ease;
+    margin-bottom: 4px;
+}
+
+.bikes-booking a:hover{
+
+    background-color: #d40000;
+
+    transform: scale(1.03);
+
+    box-shadow: 0 6px 15px rgba(212, 0, 0, 0.4);
+}
+
+
+
+/* .second-row-bike-section ======================================================*/
+#Electric-heading{
+    margin-top: 70px;
+    margin-bottom: 2px;
+    color: rgb(18, 17, 16);
+    text-align: center;
+    font-size: 28px;
+}
+
+.second-row-bike-section{
+
+    margin-top: 50px;
+
+    background-color: #c9ebf8;
+
+    padding: 30px;
+
+    border-radius: 12px;
+}
+
+/* Second Row Buttons */
+
+.second-row-bike-section .bikes-booking button{
+
+    background-color: #28a745;
+}
+
+.second-row-bike-section .bikes-booking button:hover{
+
+    background-color: #1e7e34;
+    transform: scale(1.03);
+    box-shadow: 0 6px 15px rgba(40, 167, 69, 0.4);
+}
+
+/* .third-row-bike-section====================================================== */
+
+.third-row-bike-section{
+    margin-top: 40px;
+}
+
+/* service panel ========================================== */
+.services-panel{
+
+    width: 98%;
+
+    margin: 30px auto;
+
+    padding: 30px;
+
+    background-color: #e9e9ff;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.services-panel h3{
+
+    font-size: 30px;
+
+    margin-bottom: 20px;
+
+    color: #222;
+}
+
+.services-panel a{
+
+    display: inline-block;
+
+    padding: 14px 30px;
+
+    background: linear-gradient(135deg,#ff3b30,#d40000);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    border-radius: 8px;
+
+    transition: 0.3s ease;
+}
+
+.services-panel a:hover{
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 18px rgba(212,0,0,0.4);
+}
+
+/* add on accessories  */
+.addOn-section{
+
+    width: 98%;
+    margin: 40px auto;
+    padding: 30px;
+
+    background: #f8f8f8;
+    border-radius: 10px;
+}
+
+.addOn-section h2{
+
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.addOn-section-row{
+
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.addOn-products{
+
+    width: 350px;
+    height: 250px;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+
+    transition: 0.3s;
+}
+
+.addOn-products:hover{
+
+    transform: translateY(-5px);
+}
+
+.addOn-products img{
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+/* footer section ===================================================== */
+
+.footer {
+  background-color: #222;
+  color: #fff;
+  padding: 30px;
+  text-align: center;
+  font-family: sans-serif;
+  height: px;
+}
+
+
+.footer-top {
+  display: flex;
+  justify-content: center; 
+  gap: 60px;               
+  margin-bottom: 30px;
+  margin-top: -25px;
+
+}
+
+.footer-item h3 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+/* 2. BOTTOM SECTION: Stack "Follow us" above the icons */
+.footer-bottom {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;   
+  gap: 10px;
+               
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;             
+  font-size: 24px;       
+}
+

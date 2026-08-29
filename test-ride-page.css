@@ -1,0 +1,194 @@
+/* ===========================
+   Test Ride Section
+=========================== */
+
+.form-box-container{
+    width: 95%;
+    margin: 50px auto;
+
+    display: flex;
+
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+
+    align-items: stretch;
+}
+
+/* Left Side */
+
+.form-box-left{
+    width: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Keep your image values unchanged */
+
+.test-ride-left-img-one{
+
+    width: 400px;
+    height: 100%;
+
+    background-image: url("images/test-ride-left-img.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 10px;
+}
+
+.test-ride-left-img-two{
+
+    width: 400px;
+    height: 100%;
+
+    background-image: url("images/test-ride-left-imgTWO.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 10px;
+}
+
+/* Right Side */
+
+.form-box-right{
+
+    width: 50%;
+    padding: 50px;
+}
+
+.form-box-right h1{
+
+    font-size: 38px;
+    margin-bottom: 15px;
+    color: #111;
+}
+
+.form-box-right > p{
+
+    font-size: 16px;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+/* Form */
+
+.test-ride-form{
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* Text Inputs */
+
+.test-ride-form input[type="text"],
+.test-ride-form input[type="email"],
+.test-ride-form input[type="tel"]{
+
+    width: 100%;
+
+    padding: 15px;
+
+    margin-bottom: 18px;
+
+    border: 1px solid #d4d4d4;
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.test-ride-form input[type="text"]:focus,
+.test-ride-form input[type="email"]:focus,
+.test-ride-form input[type="tel"]:focus{
+
+    border-color: #d40000;
+
+    box-shadow: 0 0 8px rgba(212,0,0,0.15);
+}
+
+/* Checkbox */
+
+.checkbox-section{
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin: 15px 0 25px;
+}
+
+.checkbox-section input[type="checkbox"]{
+
+    width: 20px;
+    height: 20px;
+
+    cursor: pointer;
+
+    margin-top: 3px;
+
+    flex-shrink: 0;
+}
+
+.checkbox-section label{
+
+    font-size: 15px;
+    color: #555;
+
+    line-height: 1.7;
+
+    margin: 0;
+}
+
+/* Submit Button */
+
+.test-ride-form button{
+
+    width: 100%;
+
+    padding: 16px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: linear-gradient(135deg,#ff3b30,#d40000);
+
+    color: white;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+    box-shadow: 0 6px 15px rgba(212,0,0,0.35);
+}
+
+.test-ride-form button:hover{
+
+    transform: translateY(-3px);
+
+    background: linear-gradient(135deg,#ff5a4f,#b80000);
+
+    box-shadow: 0 10px 20px rgba(212,0,0,0.45);
+}
+
+.test-ride-form button:active{
+
+    transform: scale(0.98);
+}

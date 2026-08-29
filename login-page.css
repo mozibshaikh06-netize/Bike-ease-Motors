@@ -1,0 +1,188 @@
+/* ===========================
+   Login Page CSS
+=========================== */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background-color: #f5f5f5;
+}
+
+/* Main Login Section */
+
+.login-container{
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding-top: 70px;
+    padding-bottom: 50px;
+}
+
+/* Login Card */
+
+.login-box{
+
+    width: 500px;
+
+    background: white;
+
+    padding: 50px 45px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+
+    text-align: center;
+}
+
+/* Heading */
+
+.login-box h2{
+
+    font-size: 40px;
+
+    color: #222;
+
+    margin-bottom: 15px;
+}
+
+/* Description */
+
+.login-box p{
+
+    font-size: 18px;
+
+    color: #666;
+
+    line-height: 28px;
+
+    margin-bottom: 35px;
+}
+
+/* Form */
+
+.login-form{
+
+    width: 100%;
+}
+
+/* Input Fields */
+
+.login-form input{
+
+    width: 100%;
+
+    padding: 18px;
+
+    margin-bottom: 22px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    font-size: 17px;
+
+    transition: 0.3s;
+}
+
+.login-form input:focus{
+
+    border-color: #ff6b00;
+
+    box-shadow: 0 0 8px rgba(255,107,0,.3);
+}
+
+/* Login Button */
+
+.login-form button{
+
+    width: 100%;
+
+    padding: 18px;
+
+    background: #ff6b00;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.login-form button:hover{
+
+    background: #e65c00;
+
+    transform: translateY(-2px);
+}
+
+/* Small Link */
+
+.login-form a{
+
+    display: inline-block;
+
+    margin-top: 20px;
+
+    color: #ff6b00;
+
+    text-decoration: none;
+
+    font-size: 15px;
+}
+
+.login-form a:hover{
+
+    text-decoration: underline;
+}
+
+   .auth-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            padding: 5px;
+        }
+        .toggle-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            font-weight: bold;
+            color: #666;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+        .toggle-btn.active {
+            background: #ff6b00;
+            color: white;
+        }
+        .alert-msg {
+            font-size: 15px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .alert-error { color: #d9534f; }
+        .alert-success { color: #5cb85c; }
