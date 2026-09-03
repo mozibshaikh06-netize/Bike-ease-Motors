@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                     if (!$stmt) {
 
-                        $signup_error = "Database error. Please try again or later.";
+                        $signup_error = "Database error. Please try again";
 
                     } else {
 
