@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         if ($stmt->execute()) {
 
                             $signup_success =
-                                "Account created successfully! Please login.";
+                                "Account created successfully! Please login .";
 
                         } else {
 
