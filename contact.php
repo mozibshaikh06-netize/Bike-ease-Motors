@@ -124,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <!-- Right Side Form -->
     <div class="contact-form">
-        <h2>Send Us a Message</h2>
+        <h2>Send Us a Message .</h2>
 
         <?php if (!empty($responseMessage)): ?>
             <p style="color: green; font-weight: bold; margin-bottom: 15px;">
