@@ -446,42 +446,99 @@ margin-top: 8px;
 
 /* footer section ===================================================== */
 
-.footer {
-  background-color: #222;
-  color: #fff;
-  padding: 30px;
-  text-align: center;
-  font-family: sans-serif;
-  height: px;
+/* ===========================
+   Footer Section Styles
+=========================== */
+
+.site-footer {
+    background-color: #0b0c10;
+    color: #9ba3af;
+    padding: 60px 8% 20px 8%;
+    font-family: Arial, sans-serif;
 }
 
-
-.footer-top {
-  display: flex;
-  justify-content: center; 
-  gap: 60px;               
-  margin-bottom: 30px;
-  margin-top: -25px;
-
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding-bottom: 50px;
 }
 
-.footer-item h3 {
-  margin-bottom: 8px;
-  font-size: 18px;
+.footer-col {
+    flex: 1;
+    min-width: 200px;
 }
 
-/* 2. BOTTOM SECTION: Stack "Follow us" above the icons */
+.footer-col.brand-col {
+    flex: 1.5;
+    min-width: 280px;
+}
+
+/* Brand Logo Styling */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.footer-logo i {
+    color: #a855f7;
+    font-size: 26px;
+}
+
+.brand-col p {
+    line-height: 1.6;
+    font-size: 14px;
+    color: #838e9e;
+}
+
+/* Section Headings */
+.footer-col h4 {
+    font-size: 13px;
+    letter-spacing: 1.2px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.heading-purple { color: #a855f7; }
+.heading-teal   { color: #2dd4bf; }
+.heading-blue   { color: #60a5fa; }
+
+/* Links Styling */
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+    color: #9ba3af;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #ffffff;
+}
+
+/* Footer Bottom Bar */
 .footer-bottom {
-  display: flex;
-  flex-direction: column; 
-  align-items: center;   
-  gap: 10px;
-               
-}
-
-.social-icons {
-  display: flex;
-  gap: 20px;             
-  font-size: 24px;       
+    border-top: 1px solid #1a1d24;
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #64748b;
 }
 

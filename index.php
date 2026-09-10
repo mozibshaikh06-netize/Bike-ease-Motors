@@ -564,45 +564,63 @@
 </div>
 
 <!-- foter section ========================================= -->
-
-<footer class="footer">
-  <!-- Top row: Contact items placed side-by-side -->
-  
-
-<!-- Footer -->
-<footer class="footer">
-
-    <div class="footer-top">
-
-        <div class="footer-item">
-            <h3>📞 Contact</h3>
-            <p>+91 8098098797</p>
+<footer class="site-footer">
+    <div class="footer-container">
+        
+        <!-- Column 1: Brand Info -->
+        <div class="footer-col brand-col">
+            <div class="footer-logo">
+                <i class="fa-solid fa-motorcycle"></i>
+                <span>BikeEase Motors</span>
+            </div>
+            <p>
+                A premier motorcycle showroom and service center dedicated to delivering top-tier performance, reliable maintenance, and exceptional rider experiences.
+            </p>
         </div>
 
-        <div class="footer-item">
-            <h3>📧 Email</h3>
-            <p>@bike_ease_motors</p>
+        <!-- Column 2: Quick Links -->
+        <div class="footer-col">
+            <h4 class="heading-purple">QUICK LINKS</h4>
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="service-appointmentpage.php">Services</a></li>
+                <li><a href="about-page.php">About</a></li>
+                <li><a href="test-ride-page.php">Test Ride</a></li>
+                <li><a href="contact.php">Contact</a></li>
+            </ul>
         </div>
 
-        <div class="footer-item">
-            <h3>💬 Queries</h3>
-            <p>Send a message</p>
+        <!-- Column 3: Services -->
+        <div class="footer-col">
+            <h4 class="heading-teal">SERVICES</h4>
+            <ul>
+                <li><a href="service-appointmentpage.php">General Bike Service</a></li>
+                <li><a href="service-appointmentpage.php">Engine Tuning & Diagnostic</a></li>
+                <li><a href="service-appointmentpage.php">Brake & Suspension Overhaul</a></li>
+                <li><a href="service-appointmentpage.php">Oil Change & Filter Care</a></li>
+                <li><a href="service-appointmentpage.php">Wheel Balancing & Alignment</a></li>
+                <li><a href="service-appointmentpage.php">Emergency Maintenance</a></li>
+            </ul>
+        </div>
+
+        <!-- Column 4: Get In Touch -->
+        <div class="footer-col">
+            <h4 class="heading-blue">GET IN TOUCH</h4>
+            <ul>
+                <li><a href="mailto:support@bikeeasemotors.com">support@bikeeasemotors.com</a></li>
+                <li><a href="#">+91 98765 43210</a></li>
+                <li><a href="contact.php">FC Road, Shivajinagar, Pune</a></li>
+            </ul>
         </div>
 
     </div>
 
+    <!-- Bottom Bar -->
     <div class="footer-bottom">
-
-        <p>Follow us on</p>
-
-        <div class="social-icons">
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-brands fa-youtube"></i>
-        </div>
-
+        <p>&copy; 2026 BikeEase Motors. All rights reserved.</p>
+        <p>Built with care by the BikeEase team.</p>
     </div>
-
 </footer>
+
 </body>
 </html>  
