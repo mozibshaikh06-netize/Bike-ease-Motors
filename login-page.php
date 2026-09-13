@@ -263,7 +263,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <a href="index.php">Home</a>
 
-            <a href="service-appoinmentpage.php">
+            <a href="service-appointmentpage.php">
                 Services
             </a>
 

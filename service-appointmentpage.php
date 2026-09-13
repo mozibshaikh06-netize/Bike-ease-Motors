@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Appointment | BikeEase Motors</title>
 
-    <link rel="stylesheet" href="service-appoinmentpage.css">
+    <link rel="stylesheet" href="service-appointmentpage.css">
 <link rel="stylesheet" href="style.css">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet"

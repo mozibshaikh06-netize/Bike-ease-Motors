@@ -37,9 +37,13 @@
     <!-- top-section-hero-image and appointment  -->
     <!-- Hero Section -->
 
-<div class="top-main">
-    <div class="top-main-hero-img"></div>
-</div> 
+<div class="top-main"> 
+    <div class="top-main-hero-img">
+        <img src="images/mian-img.png" class="hero-slide active" alt="BikeEase Motors">
+        <img src="images/hero2.png" class="hero-slide" alt="BikeEase Motors">
+        <img src="images/hero3.png" class="hero-slide" alt="BikeEase Motors">
+    </div> 
+</div>
 
 <!-- panel section  -->
 <div class="exploer-panel">

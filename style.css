@@ -139,6 +139,36 @@
     border-radius: 12px;
 }
 
+
+.top-main-hero-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity:0;
+    transition: opacity 1s ease-in-out;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
 /* info panel section */
 .exploer-panel{
     background-color: rgb(255, 255, 255);
@@ -540,5 +570,9 @@ margin-top: 8px;
     align-items: center;
     font-size: 13px;
     color: #64748b;
+    
 }
+
+
+
 
