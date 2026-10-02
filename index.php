@@ -28,7 +28,7 @@
         <div class="nav-login">
             <a href="login-page.php">Login</a>
         </div>
-        <a href="admin-dashboard.php" class="admin-link">Admin</a>
+       <a href="admin-login.php" class="admin-link">Admin</a>
 
     </div>
 
@@ -37,12 +37,22 @@
     <!-- top-section-hero-image and appointment  -->
     <!-- Hero Section -->
 
-<div class="top-main"> 
+<div class="top-main">
     <div class="top-main-hero-img">
-        <img src="images/mian-img.png" class="hero-slide active" alt="BikeEase Motors">
-        <img src="images/hero2.png" class="hero-slide" alt="BikeEase Motors">
-        <img src="images/hero3.png" class="hero-slide" alt="BikeEase Motors">
-    </div> 
+
+        <img src="images/mian-img.png"
+             class="hero-slide active"
+             alt="BikeEase Motors">
+
+        <img src="images/main2img.png"
+             class="hero-slide"
+             alt="BikeEase Motors">
+
+        <img src="images/main3-img.png"
+             class="hero-slide"
+             alt="BikeEase Motors">
+
+    </div>
 </div>
 
 <!-- panel section  -->
@@ -625,6 +635,35 @@
         <p>Built with care by the BikeEase team.</p>
     </div>
 </footer>
+<script>
 
+let slides = document.querySelectorAll(".hero-slide");
+let currentSlide = 0;
+
+function changeSlide() {
+
+    // Remove active class from current image
+    slides[currentSlide].classList.remove("active");
+
+    // Move to next image
+    currentSlide++;
+
+    // If last image is reached, go back to first
+    if (currentSlide >= slides.length) {
+        currentSlide = 0;
+    }
+
+    // Show next image
+    slides[currentSlide].classList.add("active");
+}
+
+// Change image every 3 seconds
+setInterval(changeSlide, 3000);
+
+
+
+
+
+</script>
 </body>
 </html>  
