@@ -1,61 +1,55 @@
+```php
 <?php
-
-session_start();
-
-if (!isset($_SESSION["admin_logged_in"])) {
-    header("Location: admin-login.php");
-    exit();
-}
-
 require_once "db.php";
 
-
-// ==============================
-// TEST RIDE COUNT
-// ==============================
-
-$result = $conn->query(
-    "SELECT COUNT(*) AS total FROM test_rides"
-);
-
-$row = $result->fetch_assoc();
-
-$totalTestRides = $row["total"];
+// Which page is selected?
+$page = $_GET['page'] ?? 'dashboard';
 
 
-// ==============================
-// CONTACT MESSAGE COUNT
-// ==============================
+// =======================================
+// DASHBOARD COUNTS
+// =======================================
 
-$result = $conn->query(
-    "SELECT COUNT(*) AS total FROM messages"
-);
-
-$row = $result->fetch_assoc();
-
-$totalMessages = $row["total"];
+$userCount = 0;
+$testRideCount = 0;
+$serviceCount = 0;
+$messageCount = 0;
 
 
-// ==============================
-// RECENT TEST RIDES
-// ==============================
+// Users
+$result = $conn->query("SELECT COUNT(*) AS total FROM users");
 
-$recentRides = $conn->query(
-    "SELECT * FROM test_rides
-     ORDER BY id DESC
-     LIMIT 5"
-);
+if ($result) {
+    $row = $result->fetch_assoc();
+    $userCount = $row['total'];
+}
 
 
-// ==============================
-// RECENT MESSAGES
-// ==============================
+// Test Rides
+$result = $conn->query("SELECT COUNT(*) AS total FROM test_rides");
 
-$recentMessages = $conn->query(
-    "SELECT * FROM messages
-     ORDER BY id DESC
-     LIMIT 5"
-);
+if ($result) {
+    $row = $result->fetch_assoc();
+    $testRideCount = $row['total'];
+}
+
+
+// Service Appointments
+$result = $conn->query("SELECT COUNT(*) AS total FROM service_appointments");
+
+if ($result) {
+    $row = $result->fetch_assoc();
+    $serviceCount = $row['total'];
+}
+
+
+// Messages
+$result = $conn->query("SELECT COUNT(*) AS total FROM messages");
+
+if ($result) {
+    $row = $result->fetch_assoc();
+    $messageCount = $row['total'];
+}
 
 ?>
 
@@ -66,472 +60,523 @@ $recentMessages = $conn->query(
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Admin Dashboard - BikeEase Motors</title>
 
-    <link rel="stylesheet"
-          href="admin-dashboard.css">
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="admin-dashboard.css">
 
 </head>
+
 
 <body>
 
 
-<!-- =================================
+<!-- =======================================
      SIDEBAR
-================================= -->
+======================================= -->
 
-<div class="admin-sidebar">
+<div class="sidebar">
 
-    <div class="admin-logo">
+    <h2>BIKEEASE</h2>
 
-        <i class="fa-solid fa-motorcycle"></i>
-
-        <span>BikeEase</span>
-
-    </div>
+    <p class="admin-title">ADMIN PANEL</p>
 
 
-    <div class="admin-menu">
-
-        <a href="admin-dashboard.php"
-           class="active">
-
-            <i class="fa-solid fa-house"></i>
-
-            <span>Dashboard</span>
-
-        </a>
+    <a href="admin-dashboard.php?page=dashboard"
+       class="<?php echo ($page == 'dashboard') ? 'active' : ''; ?>">
+        🏠 Dashboard
+    </a>
 
 
-        <a href="test-ride-bookings.php">
-
-            <i class="fa-solid fa-motorcycle"></i>
-
-            <span>Test Ride Bookings</span>
-
-        </a>
+    <a href="admin-dashboard.php?page=test-rides"
+       class="<?php echo ($page == 'test-rides') ? 'active' : ''; ?>">
+        🏍 Test Ride Bookings
+    </a>
 
 
-        <a href="service-appointments.php">
-
-            <i class="fa-solid fa-screwdriver-wrench"></i>
-
-            <span>Service Appointments</span>
-
-        </a>
+    <a href="admin-dashboard.php?page=services"
+       class="<?php echo ($page == 'services') ? 'active' : ''; ?>">
+        🔧 Service Appointments
+    </a>
 
 
-        <a href="contact-messages.php">
-
-            <i class="fa-solid fa-message"></i>
-
-            <span>Contact Messages</span>
-
-        </a>
+    <a href="admin-dashboard.php?page=messages"
+       class="<?php echo ($page == 'messages') ? 'active' : ''; ?>">
+        ✉ Contact Messages
+    </a>
 
 
-        <a href="registered-users.php">
-
-            <i class="fa-solid fa-users"></i>
-
-            <span>Registered Users</span>
-
-        </a>
+    <a href="admin-dashboard.php?page=users"
+       class="<?php echo ($page == 'users') ? 'active' : ''; ?>">
+        👤 Registered Users
+    </a>
 
 
-        <a href="admin-logout.php"
-           class="admin-logout">
-
-            <i class="fa-solid fa-right-from-bracket"></i>
-
-            <span>Logout</span>
-
-        </a>
-
-    </div>
+    <a href="admin-logout.php" class="logout">
+        🚪 Logout
+    </a>
 
 </div>
 
 
 
-<!-- =================================
+<!-- =======================================
      MAIN CONTENT
-================================= -->
+======================================= -->
 
-<div class="admin-main">
+<div class="main-content">
 
-    <!-- TOP HEADER -->
 
-    <div class="admin-header">
+    <!-- ===================================
+         DASHBOARD
+    ==================================== -->
 
-        <div>
+    <?php if ($page == 'dashboard'): ?>
 
-            <h1>Admin Dashboard</h1>
+        <h1>Dashboard</h1>
+
+        <p class="welcome">
+            Welcome to BikeEase Motors Admin Panel
+        </p>
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <div class="card-icon">👤</div>
+
+                <div>
+                    <h3>Registered Users</h3>
+
+                    <p><?php echo $userCount; ?></p>
+                </div>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">🏍</div>
+
+                <div>
+                    <h3>Test Ride Bookings</h3>
+
+                    <p><?php echo $testRideCount; ?></p>
+                </div>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">🔧</div>
+
+                <div>
+                    <h3>Service Appointments</h3>
+
+                    <p><?php echo $serviceCount; ?></p>
+                </div>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">✉</div>
+
+                <div>
+                    <h3>Messages</h3>
+
+                    <p><?php echo $messageCount; ?></p>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="dashboard-box">
+
+            <h2>BikeEase Motors</h2>
 
             <p>
-                Welcome to BikeEase Motors Admin Panel
+                Use the sidebar to manage test rides,
+                service appointments, contact messages
+                and registered users.
             </p>
 
         </div>
 
 
-        <div class="admin-user">
 
-            <i class="fa-solid fa-user-shield"></i>
+    <!-- ===================================
+         TEST RIDE BOOKINGS
+    ==================================== -->
 
-            <span>
+    <?php elseif ($page == 'test-rides'): ?>
+
+        <h1>Test Ride Bookings</h1>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Bike</th>
+                    <th>Model</th>
+                    <th>Phone</th>
+                    <th>Location</th>
+
+                </tr>
+
+
                 <?php
-                echo htmlspecialchars(
-                    $_SESSION["admin_username"]
+
+                $result = $conn->query(
+                    "SELECT * FROM test_rides ORDER BY id DESC"
                 );
+
+
+                if ($result && $result->num_rows > 0):
+
+                    while ($row = $result->fetch_assoc()):
+
                 ?>
-            </span>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =================================
-         STAT CARDS
-    ================================= -->
-
-    <div class="admin-stats">
-
-
-        <div class="admin-stat-card">
-
-            <div class="stat-icon">
-                <i class="fa-solid fa-motorcycle"></i>
-            </div>
-
-            <div>
-
-                <h2>
-                    <?php echo $totalTestRides; ?>
-                </h2>
-
-                <p>Test Ride Bookings</p>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="admin-stat-card">
-
-            <div class="stat-icon">
-                <i class="fa-solid fa-screwdriver-wrench"></i>
-            </div>
-
-            <div>
-
-                <h2>0</h2>
-
-                <p>Service Appointments</p>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="admin-stat-card">
-
-            <div class="stat-icon">
-                <i class="fa-solid fa-message"></i>
-            </div>
-
-            <div>
-
-                <h2>
-                    <?php echo $totalMessages; ?>
-                </h2>
-
-                <p>Contact Messages</p>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="admin-stat-card">
-
-            <div class="stat-icon">
-                <i class="fa-solid fa-users"></i>
-            </div>
-
-            <div>
-
-                <h2>0</h2>
-
-                <p>Registered Users</p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =================================
-         RECENT TEST RIDES
-    ================================= -->
-
-    <div class="admin-panel">
-
-        <div class="panel-heading">
-
-            <h2>
-                Recent Test Ride Bookings
-            </h2>
-
-            <a href="test-ride-bookings.php">
-                View All
-            </a>
-
-        </div>
-
-
-        <div class="table-wrapper">
-
-            <table>
-
-                <thead>
 
                     <tr>
 
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Bike</th>
-                        <th>Model</th>
-                        <th>Phone</th>
-                        <th>Location</th>
+                        <td><?php echo $row['id']; ?></td>
+
+                        <td><?php echo htmlspecialchars($row['full_name']); ?></td>
+
+                        <td><?php echo htmlspecialchars($row['email']); ?></td>
+
+                        <td><?php echo htmlspecialchars($row['bike_name']); ?></td>
+
+                        <td><?php echo htmlspecialchars($row['bike_model']); ?></td>
+
+                        <td><?php echo htmlspecialchars($row['phone']); ?></td>
+
+                        <td><?php echo htmlspecialchars($row['location']); ?></td>
 
                     </tr>
 
-                </thead>
 
+                <?php
 
-                <tbody>
+                    endwhile;
 
-                <?php if ($recentRides->num_rows > 0): ?>
+                else:
 
-                    <?php while ($ride = $recentRides->fetch_assoc()): ?>
-
-                        <tr>
-
-                            <td>
-                                <?php
-                                echo htmlspecialchars(
-                                    $ride["id"]
-                                );
-                                ?>
-                            </td>
-
-                            <td>
-                                <?php
-                                echo htmlspecialchars(
-                                    $ride["full_name"]
-                                );
-                                ?>
-                            </td>
-
-                            <td>
-                                <?php
-                                echo htmlspecialchars(
-                                    $ride["email"]
-                                );
-                                ?>
-                            </td>
-
-                            <td>
-                                <?php
-                                echo htmlspecialchars(
-                                    $ride["bike_name"]
-                                );
-                                ?>
-                            </td>
-
-                            <td>
-                                <?php
-                                echo htmlspecialchars(
-                                    $ride["bike_model"]
-                                );
-                                ?>
-                            </td>
-
-                            <td>
-                                <?php
-                                echo htmlspecialchars(
-                                    $ride["phone"]
-                                );
-                                ?>
-                            </td>
-
-                            <td>
-                                <?php
-                                echo htmlspecialchars(
-                                    $ride["location"]
-                                );
-                                ?>
-                            </td>
-
-                        </tr>
-
-                    <?php endwhile; ?>
-
-                <?php else: ?>
+                ?>
 
                     <tr>
 
-                        <td colspan="7"
-                            class="empty-row">
-
-                            No test ride bookings yet.
-
+                        <td colspan="7">
+                            No test ride bookings found.
                         </td>
 
                     </tr>
 
                 <?php endif; ?>
 
-                </tbody>
-
             </table>
 
         </div>
 
-    </div>
 
 
+    <!-- ===================================
+         SERVICE APPOINTMENTS
+    ==================================== -->
 
-    <!-- =================================
-         RECENT MESSAGES
-    ================================= -->
+    <?php elseif ($page == 'services'): ?>
 
-    <div class="admin-panel">
-
-        <div class="panel-heading">
-
-            <h2>
-                Recent Contact Messages
-            </h2>
-
-            <a href="contact-messages.php">
-                View All
-            </a>
-
-        </div>
+        <h1>Service Appointments</h1>
 
 
-        <div class="table-wrapper">
+        <div class="table-container">
 
             <table>
 
-                <thead>
+                <tr>
+
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Bike</th>
+                    <th>Bike Number</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Services</th>
+                    <th>Price</th>
+
+                </tr>
+
+
+                <?php
+
+                $result = $conn->query(
+                    "SELECT * FROM service_appointments
+                     ORDER BY id DESC"
+                );
+
+
+                if ($result && $result->num_rows > 0):
+
+                    while ($row = $result->fetch_assoc()):
+
+                ?>
 
                     <tr>
 
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Subject</th>
-                        <th>Message</th>
+                        <td><?php echo $row['id']; ?></td>
+
+                        <td>
+                            <?php echo htmlspecialchars($row['full_name']); ?>
+                        </td>
+
+                        <td>
+                            <?php echo htmlspecialchars($row['email']); ?>
+                        </td>
+
+                        <td>
+                            <?php echo htmlspecialchars($row['phone']); ?>
+                        </td>
+
+                        <td>
+                            <?php
+                            echo htmlspecialchars(
+                                $row['company'] . " " . $row['model']
+                            );
+                            ?>
+                        </td>
+
+                        <td>
+                            <?php echo htmlspecialchars($row['bike_number']); ?>
+                        </td>
+
+                        <td>
+                            <?php echo htmlspecialchars($row['appointment_date']); ?>
+                        </td>
+
+                        <td>
+                            <?php echo htmlspecialchars($row['appointment_time']); ?>
+                        </td>
+
+                        <td>
+                            <?php echo htmlspecialchars($row['services']); ?>
+                        </td>
+
+                        <td>
+                            ₹<?php echo htmlspecialchars($row['total_price']); ?>
+                        </td>
 
                     </tr>
 
-                </thead>
 
+                <?php
 
-                <tbody>
+                    endwhile;
 
-                <?php if ($recentMessages->num_rows > 0): ?>
+                else:
 
-                    <?php while ($message = $recentMessages->fetch_assoc()): ?>
-
-                        <tr>
-
-                            <td>
-                                <?php
-                                echo htmlspecialchars(
-                                    $message["id"]
-                                );
-                                ?>
-                            </td>
-
-                            <td>
-                                <?php
-                                echo htmlspecialchars(
-                                    $message["full_name"]
-                                );
-                                ?>
-                            </td>
-
-                            <td>
-                                <?php
-                                echo htmlspecialchars(
-                                    $message["email"]
-                                );
-                                ?>
-                            </td>
-
-                            <td>
-                                <?php
-                                echo htmlspecialchars(
-                                    $message["subject"]
-                                );
-                                ?>
-                            </td>
-
-                            <td>
-                                <?php
-                                echo htmlspecialchars(
-                                    $message["message"]
-                                );
-                                ?>
-                            </td>
-
-                        </tr>
-
-                    <?php endwhile; ?>
-
-                <?php else: ?>
+                ?>
 
                     <tr>
 
-                        <td colspan="5"
-                            class="empty-row">
-
-                            No contact messages yet.
-
+                        <td colspan="10">
+                            No service appointments found.
                         </td>
 
                     </tr>
 
                 <?php endif; ?>
 
-                </tbody>
+            </table>
+
+        </div>
+
+
+
+    <!-- ===================================
+         CONTACT MESSAGES
+    ==================================== -->
+
+    <?php elseif ($page == 'messages'): ?>
+
+        <h1>Contact Messages</h1>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Message</th>
+
+                </tr>
+
+
+                <?php
+
+                $result = $conn->query(
+                    "SELECT * FROM messages ORDER BY id DESC"
+                );
+
+
+                if ($result && $result->num_rows > 0):
+
+                    while ($row = $result->fetch_assoc()):
+
+                ?>
+
+                    <tr>
+
+                        <td><?php echo $row['id']; ?></td>
+
+                        <td>
+                            <?php echo htmlspecialchars($row['name']); ?>
+                        </td>
+
+                        <td>
+                            <?php echo htmlspecialchars($row['email']); ?>
+                        </td>
+
+                        <td>
+                            <?php echo htmlspecialchars($row['message']); ?>
+                        </td>
+
+                    </tr>
+
+
+                <?php
+
+                    endwhile;
+
+                else:
+
+                ?>
+
+                    <tr>
+
+                        <td colspan="4">
+                            No messages found.
+                        </td>
+
+                    </tr>
+
+                <?php endif; ?>
 
             </table>
 
         </div>
 
-    </div>
+
+
+    <!-- ===================================
+         REGISTERED USERS
+    ==================================== -->
+
+    <?php elseif ($page == 'users'): ?>
+
+        <h1>Registered Users</h1>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Registered On</th>
+
+                </tr>
+
+
+                <?php
+
+                $result = $conn->query(
+                    "SELECT * FROM users ORDER BY id DESC"
+                );
+
+
+                if ($result && $result->num_rows > 0):
+
+                    while ($row = $result->fetch_assoc()):
+
+                ?>
+
+                    <tr>
+
+                        <td><?php echo $row['id']; ?></td>
+
+                        <td>
+                            <?php echo htmlspecialchars($row['full_name']); ?>
+                        </td>
+
+                        <td>
+                            <?php echo htmlspecialchars($row['email']); ?>
+                        </td>
+
+                        <td>
+                            <?php echo htmlspecialchars($row['created_at']); ?>
+                        </td>
+
+                    </tr>
+
+
+                <?php
+
+                    endwhile;
+
+                else:
+
+                ?>
+
+                    <tr>
+
+                        <td colspan="4">
+                            No registered users found.
+                        </td>
+
+                    </tr>
+
+                <?php endif; ?>
+
+            </table>
+
+        </div>
+
+
+    <?php endif; ?>
 
 
 </div>
 
+
 </body>
+
 </html>
+```
