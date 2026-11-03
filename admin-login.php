@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     } else {
 
-        $error = "Invalid username or password.";
+        $error = "Invalid username or password .";
 
     }
 }
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <title>Admin Login - BikeEase Motors</title>
 <link rel="stylesheet"
-      href="admin-login.css">
+      href="admin-login.css">   
 
 </head>
 

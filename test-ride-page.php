@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="nav-login">
             <a href="login-page.html">Login</a>
         </div>
-        <a href="admin-dashboard.html" class="admin-link">Admin</a>
+        <a href="admin-login.php" class="admin-link">Admin</a>
 
     </div>
 

@@ -1,28 +1,28 @@
 <?php
 require_once "db.php";
 
-$responseMessage = "";
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $full_name = $_POST["full_name"] ?? "";
-    $email     = $_POST["email"] ?? "";
-    $subject   = $_POST["subject"] ?? "";
-    $message   = $_POST["message"] ?? "";
 
-    if (!empty($full_name) && !empty($email) && !empty($subject) && !empty($message)) {
-        $stmt = $conn->prepare(
-            "INSERT INTO messages (full_name, email, subject, message) VALUES (?, ?, ?, ?)"
-        );
-        $stmt->bind_param("ssss", $full_name, $email, $subject, $message);
+    // Read form inputs matching your HTML input 'name' attributes
+    $name = trim($_POST["full_name"] ?? "");
+    $email = trim($_POST["email"] ?? "");
+    $message = trim($_POST["message"] ?? "");
+
+    if (!empty($name) && !empty($email) && !empty($message)) {
+
+        // Insert into 'messages' table matching columns: name, email, message
+        $stmt = $conn->prepare("INSERT INTO messages (name, email, message) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $name, $email, $message);
 
         if ($stmt->execute()) {
-            $responseMessage = "Your message has been sent successfully!";
+            echo "<script>alert('Message sent successfully!'); window.location.href='contact.php';</script>";
         } else {
-            $responseMessage = "Something went wrong. Please try again.";
+            echo "Error: " . $stmt->error;
         }
+
         $stmt->close();
     } else {
-        $responseMessage = "Please fill in all required fields.";
+        echo "<script>alert('Please fill in all required fields.');</script>";
     }
 }
 ?>
